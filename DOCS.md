@@ -27,3 +27,9 @@ O processo de terminal "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.ex
 ###### - EXECUTANDO SERVIÇOS
 
 <p align="justify">Novamente fiz mais uma análise na aplicação de uma maneira mais geralzona e fiz a execução dos serviços de uma maneira independentementes: web, reader, writer e o redis.</p>
+
+###### => READER
+
+###### => WEB
+
+###### => REDIS
