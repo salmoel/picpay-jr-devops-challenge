@@ -6,21 +6,40 @@ services:
       - "5000:5000"
     networks:
       - frontend
-      - backend
+    depends_on: 
+      - reader
+      - writer
+    volumes: 
+      - ./services/frontend:/app
+
   reader:
     build: services/reader
-    ports:
-      - "8081:8081"
-    networks:
-      - frontend
-  writer:
-    build: services/writer
     ports:
       - "8080:8080"
     networks:
       - backend
-  reids:
+      - database
+    depends_on:
+      - redis
+
+  writer:
+    build: services/writer
+    ports:
+      - "8081:8081"
+    networks:
+      - backend
+      - database
+    depends_on:
+      - redis
+
+  redis:
     image: "redis:alpine"
+    expose: 
+      - 6379
+    networks: 
+      - database
 
 networks:
   backend:
+  frontend:
+  database:
